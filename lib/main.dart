@@ -29,8 +29,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
   String city = "Bangalore";
   String temperature = "--";
   String condition = "--";
+  String humidity = "--";
+  String windSpeed = "--";
+  String feelsLike = "--";
   IconData weatherIcon = Icons.wb_sunny;
   bool isLoading = false;
+  bool isDarkMode = false;
   @override
   void initState() {
     super.initState();
@@ -61,6 +65,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
         city = data["name"];
         temperature = "${data["main"]["temp"]}°C";
         condition = data["weather"][0]["main"];
+        humidity = "${data["main"]["humidity"]}%";
+        windSpeed = "${data["wind"]["speed"]} m/s";
+        feelsLike = "${data["main"]["feels_like"]}°C";
         isLoading = false;
 
         if (condition == "Clouds") {
@@ -80,6 +87,25 @@ class _WeatherScreenState extends State<WeatherScreen> {
         isLoading = false;
       });
 
+      const SizedBox(height: 20);
+
+    Text(
+    "Humidity: $humidity",
+    style: const TextStyle(fontSize: 20),
+    );
+
+      Text(
+        "Feels Like: $feelsLike",
+        style: const TextStyle(fontSize: 20),
+      );
+
+    const SizedBox(height: 10);
+
+    Text(
+    "Wind Speed: $windSpeed",
+    style: const TextStyle(fontSize: 20),
+    );
+
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text("City not found"),
@@ -91,7 +117,23 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:
+      isDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(
+              isDarkMode
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+            ),
+            onPressed: () {
+              setState(() {
+                isDarkMode = !isDarkMode;
+              });
+            },
+          ),
+        ],
         title: const Text("Weather App"),
         centerTitle: true,
       ),
@@ -127,9 +169,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
             Text(
               city,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
+                color: isDarkMode
+                    ? Colors.white
+                    : Colors.black,
               ),
             ),
 
@@ -137,8 +182,35 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
             Text(
               temperature,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 50,
+                color: isDarkMode
+                    ? Colors.white
+                    : Colors.black,
+              ),
+            ),
+
+            Text(
+              "Humidity: $humidity",
+              style: const TextStyle(
+                fontSize: 18,
+                color: Colors.red,
+              ),
+            ),
+
+            Text(
+              "Feels Like: $feelsLike",
+              style: const TextStyle(
+                fontSize: 18,
+              ),
+            ),
+
+            const SizedBox(height: 5),
+
+            Text(
+              "Wind: $windSpeed",
+              style: const TextStyle(
+                fontSize: 18,
               ),
             ),
 
@@ -146,8 +218,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
             Text(
               condition,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 24,
+                color: isDarkMode
+                    ? Colors.white
+                    : Colors.black,
               ),
             ),
           ],
