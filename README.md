@@ -23,7 +23,7 @@ A responsive weather dashboard built using HTML, CSS and JavaScript.
 
 ## Live Demo
 
-(Add GitHub Pages link if deployed)
+[(https://devasena-k09.github.io/weather-app/)](https://devasena-k09.github.io/weather-app/)
 
 ## Installation
 
