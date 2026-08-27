@@ -1,16 +1,43 @@
-# weather_app
+# Weather Application
 
-A new Flutter project.
+A responsive weather dashboard built using HTML, CSS and JavaScript.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Search weather by city name
+- Real-time weather information
+- Temperature, humidity and weather conditions
+- Dynamic UI updates based on weather data
+- Responsive design for desktop and mobile devices
 
-A few resources to get you started if this is your first Flutter project:
+## Technologies Used
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- HTML
+- CSS
+- JavaScript
+- OpenWeather API (or whichever API you used)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+
+(Add screenshot here)
+
+## Live Demo
+
+(Add GitHub Pages link if deployed)
+
+## Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/Devasena-K09/weather-app.git
+```
+
+2. Open `index.html` in your browser
+
+## Learning Outcomes
+
+- Working with APIs
+- Fetching and handling JSON data
+- DOM manipulation
+- Responsive UI development
